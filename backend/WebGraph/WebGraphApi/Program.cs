@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebGraph.Data;
+using WebGraph.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,13 @@ var connectionString = builder.Configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 builder.Services
+    .AddIdentityApiEndpoints<User>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,5 +34,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Hello World!");
+
+app.MapIdentityApi<User>();
 
 app.Run();
