@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using WebGraph.Data;
 using WebGraph.Models;
@@ -33,7 +34,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", (ClaimsPrincipal User) => User.Identity!.Name)
+    .RequireAuthorization();
 
 app.MapIdentityApi<User>();
 
