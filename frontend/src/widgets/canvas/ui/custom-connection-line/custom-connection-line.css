@@ -1,0 +1,5 @@
+.react-flow__connectionline {
+  stroke-dasharray: 5;
+  stroke-width: var(--xy-edge-stroke-width-default);
+  animation: dashdraw 0.5s linear infinite;
+}

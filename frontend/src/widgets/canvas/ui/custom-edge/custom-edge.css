@@ -1,0 +1,25 @@
+.react-flow__edge-custom.selected {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+.button-edge__label {
+  position: absolute;
+  pointer-events: all;
+  transform-origin: center;
+}
+
+.button-edge__button {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  background-color: #ff5555;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 12px;
+  padding-top: 0px;
+}
+
+.button-edge__button:hover {
+  background-color: #f00;
+}
